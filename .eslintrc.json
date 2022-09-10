@@ -1,0 +1,28 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+	"eslint:recommended",
+        "plugin:vue/vue3-essential",
+        "standard-with-typescript",
+	"eslint-config-prettier"
+    ],
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "plugins": [
+        "vue"
+    ],
+    "rules": {
+	"no-var": "error",
+	"indent": ["error", 2],
+	"quotes": ["error", "double"],
+	"semi": ["error", "always"],
+	"strict": ["error", "global"]
+    }
+}
