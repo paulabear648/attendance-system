@@ -1,10 +1,15 @@
 import express from "express";
 const app = express();
 
+//pugの初期設定など
+const pug = require("pug");
+
+app.set("view engine","pug");
+app.set("views","./src/views")
 app.use(express.raw({ type: "application/x-www-form-urlencoded" }));
 
 app.get("/list", (req: express.Request, res: express.Response) => {
-  res.send("Hello!");
+  res.render("test",{title: "TEST",name: "yu"});
 });
 
 // ルートにGETが来たらトップページへリダイレクト
