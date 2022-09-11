@@ -1,53 +1,56 @@
 {
-  "name": "attendance-system",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rimraf dist/",
-    "format": "prettier -w \"src/**/*.ts\"",
-    "lint": "eslint src/**/*.ts",
-    "tsc": "tsc",
-    "build": "run-s clean format lint tsc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/meiji-university/hayakawa-lab-2022/playground/attendance-system.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/meiji-university/hayakawa-lab-2022/playground/attendance-system/issues"
-  },
-  "homepage": "https://gitlab.com/meiji-university/hayakawa-lab-2022/playground/attendance-system#readme",
-  "dependencies": {
-    "bootstrap": "^5.2.1",
-    "express": "^4.18.1",
-    "jquery": "^3.6.1",
-    "popper.js": "^1.16.1",
-    "pug": "^3.0.2",
-    "reflect-metadata": "^0.1.13",
-    "sqlite3": "^5.0.11",
-    "typeorm": "^0.3.9",
-    "vue": "^3.2.39"
-  },
-  "devDependencies": {
-    "@types/eslint": "^8.4.6",
-    "@types/express": "^4.17.13",
-    "@types/node": "^18.7.16",
-    "@typescript-eslint/eslint-plugin": "^5.36.2",
-    "@typescript-eslint/parser": "^5.36.2",
-    "eslint": "^8.23.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-standard-with-typescript": "^22.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.2.5",
-    "eslint-plugin-promise": "^6.0.1",
-    "eslint-plugin-vue": "^9.4.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.7.1",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.8.3"
-  }
+   "name": "attendance-system",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "clean": "rimraf dist/",
+      "format": "prettier -w \"src/**/*.ts\"",
+      "lint": "eslint src/**/*.ts",
+      "tsc": "tsc",
+      "build": "run-s clean format lint tsc",
+      "start": "ts-node src/index.ts",
+      "typeorm": "typeorm-ts-node-commonjs"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+ssh://git@gitlab.com/meiji-university/hayakawa-lab-2022/playground/attendance-system.git"
+   },
+   "author": "",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://gitlab.com/meiji-university/hayakawa-lab-2022/playground/attendance-system/issues"
+   },
+   "homepage": "https://gitlab.com/meiji-university/hayakawa-lab-2022/playground/attendance-system#readme",
+   "dependencies": {
+      "bootstrap": "^5.2.1",
+      "express": "^4.18.1",
+      "jquery": "^3.6.1",
+      "popper.js": "^1.16.1",
+      "pug": "^3.0.2",
+      "reflect-metadata": "^0.1.13",
+      "sqlite3": "^5.0.11",
+      "typeorm": "0.3.9",
+      "vue": "^3.2.39"
+   },
+   "devDependencies": {
+      "@types/eslint": "^8.4.6",
+      "@types/express": "^4.17.13",
+      "@types/node": "^16.11.10",
+      "@typescript-eslint/eslint-plugin": "^5.36.2",
+      "@typescript-eslint/parser": "^5.36.2",
+      "eslint": "^8.23.0",
+      "eslint-config-prettier": "^8.5.0",
+      "eslint-config-standard-with-typescript": "^22.0.0",
+      "eslint-plugin-import": "^2.26.0",
+      "eslint-plugin-n": "^15.2.5",
+      "eslint-plugin-promise": "^6.0.1",
+      "eslint-plugin-vue": "^9.4.0",
+      "npm-run-all": "^4.1.5",
+      "prettier": "^2.7.1",
+      "rimraf": "^3.0.2",
+      "typescript": "4.5.2",
+      "ts-node": "10.7.0"
+   }
 }
