@@ -1,8 +1,16 @@
 doctype html
 html
     head
-        title #{title}
+        meta(charset = "utf-8")
+        title Attendance System 
     body
-        h1 this is test
-        p #{name} 
-        input(type = "button" name="test")
+        h1 Hayakawa-lab Attendance System
+        div
+            ol 
+                li 名前を入力
+                li 入手つまたは体質を押して送信。
+        form
+            input#name(type = "text" name="context" required)
+            input#attend(type = "submit" name="入室")
+            input#leave(type = "submit" name="退室")
+        p #{name}
