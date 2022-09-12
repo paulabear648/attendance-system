@@ -9,7 +9,7 @@ app.set("views", "./src/views");
 app.use(express.raw({ type: "application/x-www-form-urlencoded" }));
 
 app.get("/list", (req: express.Request, res: express.Response) => {
-  res.render("test", { name: "yu" });
+  res.render("template", { list: ["yu","mo","chi"] });
 });
 
 // ルートにGETが来たらトップページへリダイレクト

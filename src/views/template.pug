@@ -8,9 +8,10 @@ html
         div
             ol 
                 li 名前を入力
-                li 入力または退室を押して送信
-        form(method="POST" action="/list")
+                li 入手つまたは体質を押して送信。
+        form
             input#name(type = "text" name="context" required)
             input#attend(type = "submit" name="入室")
             input#leave(type = "submit" name="退室")
-        p #{name}
+        each name in list
+            p #{name}
