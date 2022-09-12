@@ -1,13 +1,15 @@
+
 doctype html
 html
     head
         meta(charset = "utf-8")
         title Attendance System
-        link(href='./public/assets/sanitize.css' rel='stylesheet' type='text/css') 
-        link(href='./public/assets/style.css' rel='stylesheet' type='text/css')
-        link(rel='preconnect' href='https://fonts.googleapis.com')
-        link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
-        link(href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap' rel='stylesheet')    
+        // エラー吐いたっぽいのでコメントアウトしました
+        //link(href='./public/assets/sanitize.css' rel='stylesheet' type='text/css') 
+        //link(href='./public/assets/style.css' rel='stylesheet' type='text/css')
+        //link(rel='preconnect' href='https://fonts.googleapis.com')
+        //link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+        //link(href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap' rel='stylesheet')    
     body
         section.section
             h1 Hayakawa-lab Attendance System
@@ -15,9 +17,10 @@ html
                 ol 
                     li 名前を入力
                     li 入室または退室を押して送信
+            // {context: "名前", state: "入室（or退室）"} というデータがサーバー側に送られる
             form(method="POST" action="/list")
                 input#name(type = "text" name="context" required)
-                button#attend(type = "submit" name="entry") 入室
-                button#leave(type = "submit" name="exit") 退室
+                button#attend(type = "submit" name = "state" value = "入室") 入室
+                button#leave(type = "submit" name = "state" value = "退室") 退室
         each person in list
             p #{person.name} #{person.state}
