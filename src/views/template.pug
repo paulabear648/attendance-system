@@ -2,16 +2,22 @@ doctype html
 html
     head
         meta(charset = "utf-8")
-        title Attendance System 
+        title Attendance System
+        link(href='./public/assets/sanitize.css' rel='stylesheet' type='text/css') 
+        link(href='./public/assets/style.css' rel='stylesheet' type='text/css')
+        link(rel='preconnect' href='https://fonts.googleapis.com')
+        link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+        link(href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap' rel='stylesheet')    
     body
-        h1 Hayakawa-lab Attendance System
-        div
-            ol 
-                li 名前を入力
-                li 入手つまたは体質を押して送信。
-        form
-            input#name(type = "text" name="context" required)
-            input#attend(type = "submit" name="入室")
-            input#leave(type = "submit" name="退室")
+        section.section
+            h1 Hayakawa-lab Attendance System
+            div
+                ol 
+                    li 名前を入力
+                    li 入力または退室を押して送信
+            form(method="POST" action="/list")
+                input#name(type = "text" name="context" required)
+                input#attend(type = "submit" name="入室")
+                input#leave(type = "submit" name="退室")
         each name in list
             p #{name}
