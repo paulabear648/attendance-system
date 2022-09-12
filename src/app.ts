@@ -13,7 +13,7 @@ app.use(express.raw({ type: "application/x-www-form-urlencoded" }));
 app.get("/list", async function (req: express.Request, res: express.Response) {
   const lists = await AppDataSource.getRepository(List).find();
   console.log(lists);
-  res.render("template", { name: "yu" });
+  res.render("template", { list: lists });
 });
 
 // ルートにGETが来たらトップページへリダイレクト

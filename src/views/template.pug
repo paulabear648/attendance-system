@@ -17,7 +17,7 @@ html
                     li 入力または退室を押して送信
             form(method="POST" action="/list")
                 input#name(type = "text" name="context" required)
-                input#attend(type = "submit" name="入室")
-                input#leave(type = "submit" name="退室")
-        each name in list
-            p #{name}
+                input#attend(type = "submit" name="entry")
+                input#leave(type = "submit" name="exit")
+        each person in list
+            p #{person.name} #{person.state}
