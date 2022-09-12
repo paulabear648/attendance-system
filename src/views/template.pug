@@ -14,10 +14,10 @@ html
             div
                 ol 
                     li 名前を入力
-                    li 入力または退室を押して送信
+                    li 入室または退室を押して送信
             form(method="POST" action="/list")
                 input#name(type = "text" name="context" required)
-                input#attend(type = "submit" name="entry")
-                input#leave(type = "submit" name="exit")
+                button#attend(type = "submit" name="entry") 入室
+                button#leave(type = "submit" name="exit") 退室
         each person in list
             p #{person.name} #{person.state}
