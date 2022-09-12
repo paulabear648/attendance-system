@@ -4,7 +4,7 @@ import { List } from "./entity/List";
 
 export const AppDataSource = new DataSource({
   type: "sqlite",
-  database: "./src/entity/List.ts",
+  database: "./dist/database.sqlite",
   synchronize: true,
   logging: false,
   entities: [List],
