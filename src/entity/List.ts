@@ -9,5 +9,8 @@ export class List {
     name: string;
 
   @Column()
+    time: string;
+
+  @Column()
     state: string;
 }

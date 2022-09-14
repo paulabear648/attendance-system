@@ -23,4 +23,4 @@ html
                 button#attend(type = "submit" name = "state" value = "入室") 入室
                 button#leave(type = "submit" name = "state" value = "退室") 退室
         each person in list
-            p #{person.name} #{person.state}
+            p #{person.name} #{person.time} #{person.state}
