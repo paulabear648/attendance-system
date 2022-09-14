@@ -3,9 +3,7 @@ import { List } from "./entity/List";
 
 const model = {
   getLists() {
-    const lists = AppDataSource.getRepository(List).find();
-    console.log(lists);
-    return lists;
+    return AppDataSource.getRepository(List).find();
   },
 };
 
