@@ -3,7 +3,11 @@ import { List } from "./entity/List";
 
 const model = {
   getLists() {
-    return AppDataSource.getRepository(List).find();
+    return AppDataSource.getRepository(List).find({
+      order: {
+        id: "DESC",
+      },
+    });
   },
 };
 
