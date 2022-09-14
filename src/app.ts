@@ -1,6 +1,7 @@
 import { AppDataSource } from "./data-source";
 import { List } from "./entity/List";
 import express from "express";
+import model from "./model";
 const app = express();
 const qs = require("qs");
 
@@ -15,8 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 // /listに対してGETリクエストが来た際の処理
 app.get("/list", async function (req: express.Request, res: express.Response) {
   // Listテーブル内のすべてのデータを取得
-  const lists = await AppDataSource.getRepository(List).find();
-  console.log(lists);
+  const lists = await model.getLists();
   // テンプレートエンジンに読み込ませる
   res.render("template", { list: lists });
 });
