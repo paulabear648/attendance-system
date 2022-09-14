@@ -31,6 +31,26 @@ app.post("/list", (req: express.Request, res: express.Response) => {
   // データを保持し、ターミナルにidを表示
   const list = new List();
   list.name = params.context;
+  // ここから日付表示用の処理
+  const date = new Date();
+  console.log(date.toString());
+  const dayOfWeek = date.getDay(); //getDayメソッドは数字を返すため、
+  const dayOfWeekStr = ["日", "月", "火", "水", "木", "金", "土"][dayOfWeek]; // ここで曜日を日本語表記に変換する
+  // Date()で表示される時間は見づらかったため、見やすく表示。この部分は、関数化し、Modelにやらせたほうが良いかも
+  list.time =
+    date.getFullYear().toString() +
+    "年" +
+    (date.getMonth() + 1).toString() +
+    "月" +
+    date.getDate().toString() +
+    "日（" +
+    dayOfWeekStr +
+    "）" +
+    date.getHours().toString() +
+    "：" +
+    date.getMinutes().toString() +
+    "：" +
+    date.getSeconds().toString();
   list.state = params.state;
 
   // データを保存した後、/listにリダイレクト
