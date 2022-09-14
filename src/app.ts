@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/list", async function (req: express.Request, res: express.Response) {
   // Listテーブル内のすべてのデータを取得
   const lists = await model.getLists();
+  console.log(lists);
   // テンプレートエンジンに読み込ませる
   res.render("template", { list: lists });
 });
@@ -31,11 +32,11 @@ app.post("/list", (req: express.Request, res: express.Response) => {
   const list = new List();
   list.name = params.context;
   list.state = params.state;
-  console.log("Saved a new user with id: " + list.id);
 
   // データを保存した後、/listにリダイレクト
   (async () => {
     await AppDataSource.manager.save(list);
+    console.log("Saved a new user with id: " + list.id); // listにsaveしたあと、idに値が入るため、ここでconsole.log
     res.redirect("/list");
   })();
 });
