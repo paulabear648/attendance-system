@@ -1,26 +1,38 @@
-
 doctype html
 html
     head
         meta(charset = "utf-8")
         title Attendance System
-        // エラー吐いたっぽいのでコメントアウトしました
-        //link(href='./public/assets/sanitize.css' rel='stylesheet' type='text/css') 
-        //link(href='./public/assets/style.css' rel='stylesheet' type='text/css')
-        //link(rel='preconnect' href='https://fonts.googleapis.com')
-        //link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
-        //link(href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap' rel='stylesheet')    
+        //link(rel='stylesheet' link='assets/style.css' type='text/css')
+        //link(rel='stylesheet' link='assets/sanitize.css' type='text/css')
+        link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
+	
     body
-        section.section
-            h1 Hayakawa-lab Attendance System
-            div
-                ol 
-                    li 名前を入力
-                    li 入室または退室を押して送信
-            // {context: "名前", state: "入室（or退室）"} というデータがサーバー側に送られる
+        header
+            h1
+                center#red Hayakawa-lab Attendance System
+	
+        center
+            ol
+                li 名前を入力
+                li 入室または退室を押して送信
+                // {context: "名前", state: "入室（or退室）"} というデータがサーバー側に送られる
+        center
             form(method="POST" action="/list")
                 input#name(type = "text" name="context" required)
                 button#attend(type = "submit" name = "state" value = "入室") 入室
                 button#leave(type = "submit" name = "state" value = "退室") 退室
-        each person in list
-            p #{person.name} #{person.time} #{person.state}
+        center
+            table.table
+                thead
+                    tr
+                        - var elements = ['氏名', '日付', '状態']
+                        each item in elements
+                            th #{item}
+
+                tbody
+                    each person in list
+                        tr
+                            th #{person.name}
+                            th #{person.time}
+                            th #{person.state}
