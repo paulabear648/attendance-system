@@ -6,3 +6,10 @@ body {
     line-height: 1.5;
     color: #333
 }
+
+h1 {
+    color: red;
+}
+
+.front {
+    background-color: #dddddd;
