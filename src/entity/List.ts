@@ -9,7 +9,7 @@ export class List {
   name: string;
 
   @Column({ nullable: false })
-  time: string;
+  time: Date;
 
   @Column({ nullable: false })
   state: string;

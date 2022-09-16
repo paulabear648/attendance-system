@@ -16,9 +16,40 @@ app.use(express.static("./src/public"));
 app.get("/records", async (req: express.Request, res: express.Response) => {
   // Listテーブル内のすべてのデータを取得
   const lists = await model.getLists();
-  console.log(lists);
+
+  const newRecords = [];
+
+  for (const list of lists) {
+    const id = list.id;
+    const name = list.name;
+
+    const dayOfWeek = list.time.getDay(); //getDayメソッドは数字を返すため、
+    const dayOfWeekStr = ["日", "月", "火", "水", "木", "金", "土"][dayOfWeek]; // ここで曜日を日本語表記に変換する
+
+    // Date()で表示される時間は見づらかったため、見やすく表示。この部分は、関数化し、Modelにやらせたほうが良いかも
+    const time =
+      list.time.getFullYear().toString() +
+      "年" +
+      (list.time.getMonth() + 1).toString() +
+      "月" +
+      list.time.getDate().toString() +
+      "日（" +
+      dayOfWeekStr +
+      "）" +
+      list.time.getHours().toString() +
+      "：" +
+      list.time.getMinutes().toString() +
+      "：" +
+      list.time.getSeconds().toString();
+
+    const state = list.state;
+
+    newRecords.push({ id, name, time, state });
+  }
+
+  console.log(newRecords);
   // テンプレートエンジンに読み込ませる
-  res.render("template", { list: lists });
+  res.render("template", { list: newRecords });
 });
 
 // /recordsに対してPOSTリクエストが来た際の処理
@@ -27,27 +58,14 @@ app.post("/records", async (req: express.Request, res: express.Response) => {
 
   // データを保持し、ターミナルにidを表示
   const list = new List();
+
   list.name = body.context;
+
   // ここから日付表示用の処理
-  const date = new Date();
-  console.log(date.toString());
-  const dayOfWeek = date.getDay(); //getDayメソッドは数字を返すため、
-  const dayOfWeekStr = ["日", "月", "火", "水", "木", "金", "土"][dayOfWeek]; // ここで曜日を日本語表記に変換する
-  // Date()で表示される時間は見づらかったため、見やすく表示。この部分は、関数化し、Modelにやらせたほうが良いかも
-  list.time =
-    date.getFullYear().toString() +
-    "年" +
-    (date.getMonth() + 1).toString() +
-    "月" +
-    date.getDate().toString() +
-    "日（" +
-    dayOfWeekStr +
-    "）" +
-    date.getHours().toString() +
-    "：" +
-    date.getMinutes().toString() +
-    "：" +
-    date.getSeconds().toString();
+  const date = new Date(); // dateはDate型
+  list.time = date;
+  // ここまで
+
   list.state = body.state;
 
   // データを保存した後、/recordsにリダイレクト
