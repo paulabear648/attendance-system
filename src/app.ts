@@ -4,38 +4,31 @@ import { AppDataSource } from "./data-source";
 import { List } from "./entity/List";
 import model from "./model";
 
-const qs = require("qs");
 
 const app = express();
 
 app.set("view engine", "pug");
 app.set("views", "./src/views");
-app.use(express.raw({ type: "application/x-www-form-urlencoded" }));
+app.use(express.raw({ type: "application/json" }));
 app.use(express.urlencoded({ extended: true }));
-//app.use(express.static(__dirname + "/public"));
 app.use(express.static("./src/public"));
 
 // /recordsに対してGETリクエストが来た際の処理
-app.get(
-  "/records",
-  async function (req: express.Request, res: express.Response) {
-    // Listテーブル内のすべてのデータを取得
-    const lists = await model.getLists();
-    console.log(lists);
-    // テンプレートエンジンに読み込ませる
-    res.render("template", { list: lists });
-  }
-);
+app.get("/records", async (req: express.Request, res: express.Response) => {
+  // Listテーブル内のすべてのデータを取得
+  const lists = await model.getLists();
+  console.log(lists);
+  // テンプレートエンジンに読み込ませる
+  res.render("template", { list: lists });
+});
 
-// /listに対してPOSTリクエストが来た際の処理
-app.post("/records", (req: express.Request, res: express.Response) => {
-  // 送られてきたデータをオブジェクト型に変換
-  const body = req.body.toString("utf8");
-  const params = qs.parse(body);
+// /recordsに対してPOSTリクエストが来た際の処理
+app.post("/records", async (req: express.Request, res: express.Response) => {
+  const body = req.body;
 
   // データを保持し、ターミナルにidを表示
   const list = new List();
-  list.name = params.context;
+  list.name = body.context;
   // ここから日付表示用の処理
   const date = new Date();
   console.log(date.toString());
@@ -56,14 +49,12 @@ app.post("/records", (req: express.Request, res: express.Response) => {
     date.getMinutes().toString() +
     "：" +
     date.getSeconds().toString();
-  list.state = params.state;
+  list.state = body.state;
 
-  // データを保存した後、/listにリダイレクト
-  (async () => {
-    await AppDataSource.manager.save(list);
-    console.log("Saved a new user with id: " + list.id); // listにsaveしたあと、idに値が入るため、ここでconsole.log
-    res.redirect("/records");
-  })();
+  // データを保存した後、/recordsにリダイレクト
+  await AppDataSource.manager.save(list);
+  console.log("Saved a new user with id: " + list.id); // listにsaveしたあと、idに値が入るため、ここでconsole.log
+  res.redirect("/records");
 });
 
 // ルートにGETが来たらトップページへリダイレクト
