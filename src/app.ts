@@ -1,9 +1,12 @@
+import express from "express";
+
 import { AppDataSource } from "./data-source";
 import { List } from "./entity/List";
-import express from "express";
 import model from "./model";
-const app = express();
+
 const qs = require("qs");
+
+const app = express();
 
 app.set("view engine", "pug");
 app.set("views", "./src/views");
