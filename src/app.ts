@@ -12,6 +12,8 @@ app.set("view engine", "pug");
 app.set("views", "./src/views");
 app.use(express.raw({ type: "application/x-www-form-urlencoded" }));
 app.use(express.urlencoded({ extended: true }));
+//app.use(express.static(__dirname + "/public"));
+app.use(express.static("./src/public"));
 
 // /listに対してGETリクエストが来た際の処理
 app.get("/list", async function (req: express.Request, res: express.Response) {
