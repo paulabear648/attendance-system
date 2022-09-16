@@ -12,17 +12,20 @@ app.use(express.urlencoded({ extended: true }));
 //app.use(express.static(__dirname + "/public"));
 app.use(express.static("./src/public"));
 
-// /listに対してGETリクエストが来た際の処理
-app.get("/list", async function (req: express.Request, res: express.Response) {
-  // Listテーブル内のすべてのデータを取得
-  const lists = await model.getLists();
-  console.log(lists);
-  // テンプレートエンジンに読み込ませる
-  res.render("template", { list: lists });
-});
+// /recordsに対してGETリクエストが来た際の処理
+app.get(
+  "/records",
+  async function (req: express.Request, res: express.Response) {
+    // Listテーブル内のすべてのデータを取得
+    const lists = await model.getLists();
+    console.log(lists);
+    // テンプレートエンジンに読み込ませる
+    res.render("template", { list: lists });
+  }
+);
 
 // /listに対してPOSTリクエストが来た際の処理
-app.post("/list", (req: express.Request, res: express.Response) => {
+app.post("/records", (req: express.Request, res: express.Response) => {
   // 送られてきたデータをオブジェクト型に変換
   const body = req.body.toString("utf8");
   const params = qs.parse(body);
@@ -56,14 +59,14 @@ app.post("/list", (req: express.Request, res: express.Response) => {
   (async () => {
     await AppDataSource.manager.save(list);
     console.log("Saved a new user with id: " + list.id); // listにsaveしたあと、idに値が入るため、ここでconsole.log
-    res.redirect("/list");
+    res.redirect("/records");
   })();
 });
 
 // ルートにGETが来たらトップページへリダイレクト
 app.get("/", (req: express.Request, res: express.Response) => {
   console.log("/");
-  res.redirect("/list");
+  res.redirect("/records");
 });
 
 // typeormの起動
