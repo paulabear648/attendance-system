@@ -3,14 +3,14 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 @Entity()
 export class List {
   @PrimaryGeneratedColumn()
-    id: number;
+  id: number;
 
-  @Column()
-    name: string;
+  @Column({ nullable: false })
+  name: string;
 
-  @Column()
-    time: string;
+  @Column({ nullable: false })
+  time: string;
 
-  @Column()
-    state: string;
+  @Column({ nullable: false })
+  state: string;
 }
