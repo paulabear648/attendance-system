@@ -5,9 +5,6 @@ import model from "./model";
 const app = express();
 const qs = require("qs");
 
-// pugの初期設定など
-const pug = require("pug");
-
 app.set("view engine", "pug");
 app.set("views", "./src/views");
 app.use(express.raw({ type: "application/x-www-form-urlencoded" }));
