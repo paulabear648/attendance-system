@@ -4,7 +4,6 @@ import { AppDataSource } from "./data-source";
 import { List } from "./entity/List";
 import model from "./model";
 
-
 const app = express();
 
 app.set("view engine", "pug");

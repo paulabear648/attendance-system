@@ -3,4 +3,3 @@ README.md
 package.json
 package-lock.json
 tsconfig.json
-src/entity/*.ts
