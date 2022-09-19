@@ -1,7 +1,9 @@
 import express from "express";
 
 import { AppDataSource } from "./data-source";
+import { MembersDataSource } from "./data-source";
 import { Record } from "./entity/Record";
+import { Members } from "./entity/Members";
 import model from "./model";
 
 const app = express();
@@ -65,6 +67,30 @@ app.get("/records", async (req: express.Request, res: express.Response) => {
 app.post("/records", async (req: express.Request, res: express.Response) => {
   const body = req.body;
 
+  // 照合
+  const name = body.context;
+  const pin = body.pin;
+  // 名前の照合
+  const collationedMember = await MembersDataSource.getRepository(Members)
+    .createQueryBuilder("Members")
+    .where("Members.name = :name", { name: name })
+    .getOne();
+
+  // 名前が存在しない場合
+  if (collationedMember === null) {
+    res.redirect("records");
+    console.log("name not found");
+    return;
+  }
+  // PINが合致しない場合
+  else if (collationedMember.pin !== pin) {
+    res.redirect("records");
+    console.log("pin not collect");
+    return;
+  }
+
+  // PINが合致した場合
+
   // データを保持し、ターミナルにidを表示
   const record = new Record();
 
@@ -96,6 +122,10 @@ AppDataSource.initialize()
       "Here you can setup and run express / fastify / any other framework."
     );
   })
+  .catch((error) => console.log(error));
+
+MembersDataSource.initialize()
+  .then(async () => {})
   .catch((error) => console.log(error));
 
 //  localhost 8080でサーバー
