@@ -19,7 +19,8 @@ html
         // {context: "名前", state: "入室（or退室）"} というデータがサーバー側に送られる
         .center
             form(method="POST" action="/records")
-                input#name(type = "text" name="context" required)
+                input#name(type="text" name="context" placeholder="名前" required)
+                input#pin(type="password" name="pin" placeholder="PIN" required)
                 button#attend.btn.btn-outline-info(type="submit" name="state" value="入室") 入室
                 button#leave.btn.btn-outline-success(type="submit" name="state" value="退室") 退室
                 
