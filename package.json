@@ -10,8 +10,7 @@
       "lint": "eslint src/**/*.ts",
       "tsc": "tsc",
       "build": "run-s clean format lint tsc",
-      "start": "ts-node src/index.ts",
-      "typeorm": "typeorm-ts-node-commonjs"
+      "initdb": "rimraf dist/memberdb.sqlite && node dist/initmembers.js"
    },
    "repository": {
       "type": "git",
