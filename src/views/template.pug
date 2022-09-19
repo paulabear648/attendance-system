@@ -6,7 +6,9 @@ html
         link(rel='stylesheet' href='assets/style.css' type='text/css')
         link(rel='stylesheet' href='assets/sanitize.css' type='text/css')
         link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
-	
+        script(type='text/typescript' src='main.ts')
+
+
     body.bg-light
         header.container
             h1.center Hayakawa-lab Attendance System
@@ -20,7 +22,8 @@ html
         .center
             form(method="POST" action="/records")
                 input#name(type="text" name="context" placeholder="名前" required)
-                input#pin(type="password" name="pin" placeholder="PIN" required)
+                input#pin(type="password" name="pin" maxlength="4" placeholder="PIN" required)
+                div#alert
                 button#attend.btn.btn-outline-info(type="submit" name="state" value="入室") 入室
                 button#leave.btn.btn-outline-success(type="submit" name="state" value="退室") 退室
                 
