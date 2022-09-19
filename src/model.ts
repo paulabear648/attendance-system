@@ -1,9 +1,9 @@
 import { AppDataSource } from "./data-source";
-import { List } from "./entity/List";
+import { Record } from "./entity/Record";
 
 const model = {
-  getLists() {
-    return AppDataSource.getRepository(List).find({
+  getRecords() {
+    return AppDataSource.getRepository(Record).find({
       order: {
         id: "DESC",
       },
