@@ -17,7 +17,14 @@ app.get("/records", async (req: express.Request, res: express.Response) => {
   // Listテーブル内のすべてのデータを取得
   const lists = await model.getLists();
 
-  const newRecords = [];
+  //pushメソッドを使用しないためにconstをvarに書き換え
+  //const nerRecords = [];
+  var newRecords: {
+    id: number;
+    name: string;
+    time: string;
+    state: string;
+  }[] = [];
 
   for (const list of lists) {
     const id = list.id;
@@ -44,7 +51,9 @@ app.get("/records", async (req: express.Request, res: express.Response) => {
 
     const state = list.state;
 
-    newRecords.push({ id, name, time, state });
+    //pushが使用されていたのでコメントアウト、代わりに代入で処理
+    //newRecords.push({ id, name, time, state });
+    newRecords = [...newRecords, { id, name, time, state }];
   }
 
   console.log(newRecords);
