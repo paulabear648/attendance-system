@@ -3,7 +3,7 @@ import express from "express";
 import { AppDataSource } from "./data-source";
 import { MembersDataSource } from "./data-source";
 import { Record } from "./entity/Record";
-import { Members } from "./entity/Members";
+import certificator from "./certification";
 import model from "./model";
 
 const app = express();
@@ -31,26 +31,7 @@ app.get("/records", async (req: express.Request, res: express.Response) => {
   for (const record of records) {
     const id = record.id;
     const name = record.name;
-
-    const dayOfWeek = record.time.getDay(); //getDayメソッドは数字を返すため、
-    const dayOfWeekStr = ["日", "月", "火", "水", "木", "金", "土"][dayOfWeek]; // ここで曜日を日本語表記に変換する
-
-    // Date()で表示される時間は見づらかったため、見やすく表示。この部分は、関数化し、Modelにやらせたほうが良いかも
-    const time =
-      record.time.getFullYear().toString() +
-      "年" +
-      (record.time.getMonth() + 1).toString() +
-      "月" +
-      record.time.getDate().toString() +
-      "日（" +
-      dayOfWeekStr +
-      "）" +
-      record.time.getHours().toString() +
-      "：" +
-      record.time.getMinutes().toString() +
-      "：" +
-      record.time.getSeconds().toString();
-
+    const time = model.stringifyTime(record.time); // 文字列に変換
     const state = record.state;
 
     //pushが使用されていたのでコメントアウト、代わりに代入で処理
@@ -59,6 +40,7 @@ app.get("/records", async (req: express.Request, res: express.Response) => {
   }
 
   console.log(newRecords);
+  console.log("");
   // テンプレートエンジンに読み込ませる
   res.render("template", { record: newRecords });
 });
@@ -67,25 +49,15 @@ app.get("/records", async (req: express.Request, res: express.Response) => {
 app.post("/records", async (req: express.Request, res: express.Response) => {
   const body = req.body;
 
-  // 照合
   const name = body.context;
   const pin = body.pin;
-  // 名前の照合
-  const collationedMember = await MembersDataSource.getRepository(Members)
-    .createQueryBuilder("Members")
-    .where("Members.name = :name", { name: name })
-    .getOne();
-
-  // 名前が存在しない場合
-  if (collationedMember === null) {
-    res.redirect("records");
-    console.log("name not found");
-    return;
-  }
-  // PINが合致しない場合
-  else if (collationedMember.pin !== pin) {
-    res.redirect("records");
-    console.log("pin not collect");
+  // 名前の照合（cert:照合結果, message:表示させるメッセージ）
+  const certData = await certificator.certificate(name, pin);
+  // 照合失敗の場合
+  if (!certData.cert) {
+    // res.render("template", { record: newRecords, message: certData.message });
+    // 上の形にすれば、ブラウザにメッセージが出力できそう
+    res.redirect("/records");
     return;
   }
 
