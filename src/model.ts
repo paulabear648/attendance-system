@@ -1,6 +1,8 @@
 import { AppDataSource } from "./data-source";
 import { Record } from "./entity/Record";
 
+const TIMEDIGIT = 2;
+
 const model = {
   getRecords() {
     return AppDataSource.getRepository(Record).find({
@@ -18,20 +20,24 @@ const model = {
     const timeStr =
       time.getFullYear().toString() +
       "年" +
-      (time.getMonth() + 1).toString() +
+      padStartWith0((time.getMonth() + 1).toString()) +
       "月" +
-      time.getDate().toString() +
+      padStartWith0(time.getDate().toString()) +
       "日（" +
       dayOfWeekStr +
       "）" +
-      time.getHours().toString() +
+      padStartWith0(time.getHours().toString()) +
       "：" +
-      time.getMinutes().toString() +
+      padStartWith0(time.getMinutes().toString()) +
       "：" +
-      time.getSeconds().toString();
+      padStartWith0(time.getSeconds().toString());
 
     return timeStr;
   },
 };
+
+function padStartWith0(time: string) {
+  return time.padStart(TIMEDIGIT, "0");
+}
 
 export default model;
