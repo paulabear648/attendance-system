@@ -21,9 +21,9 @@ const model = {
       年
       ${String(padStartWith0((time.getMonth() + 1).toString()))}
       月
-      ${String(padStartWith0((time.getDate()).toString()))}
+      ${String(padStartWith0(time.getDate().toString()))}
       日（
-      ${String(padStartWith0(dayOfWeekStr))}
+      ${String(dayOfWeekStr)}
       ）
       ${String(padStartWith0(time.getHours().toString()))}
       ：
@@ -35,7 +35,7 @@ const model = {
   },
 };
 
-function padStartWith0(time: string) {
+function padStartWith0(time: string): string {
   return time.padStart(TIMEDIGIT, "0");
 }
 
