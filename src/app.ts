@@ -18,7 +18,7 @@ app.use("/records", records);
 // typeormの起動
 ormInit.init();
 
-app.get("/", (req, res) => {
+app.get("/", (req: express.Request, res: express.Response) => {
   console.log("/");
   res.redirect("/records");
 });
