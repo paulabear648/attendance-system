@@ -1,5 +1,5 @@
-import { Members } from "./entity/Members";
-import { MembersDataSource } from "./data-source";
+import { Member } from "./entity/member";
+import { MemberDataSource } from "./data-source";
 
 const certificator = {
   // 照合結果に応じてcert, messageを返す
@@ -8,9 +8,9 @@ const certificator = {
 
   async certificate(name: string, pin: string) {
     // 名前がデータにあれば、そのデータを取得
-    const member = await MembersDataSource.getRepository(Members)
-      .createQueryBuilder("Members")
-      .where("Members.name = :name", { name })
+    const member = await MemberDataSource.getRepository(Member)
+      .createQueryBuilder("Member")
+      .where("Member.name = :name", { name })
       .getOne();
 
     // 名前がデータにない場合

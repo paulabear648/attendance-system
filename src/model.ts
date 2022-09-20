@@ -1,11 +1,11 @@
-import { AppDataSource } from "./data-source";
-import { Record } from "./entity/Record";
+import { RecordDataSource } from "./data-source";
+import { Record } from "./entity/record";
 
 const TIMEDIGIT = 2;
 
 const model = {
   async getRecords() {
-    return await AppDataSource.getRepository(Record).find({
+    return await RecordDataSource.getRepository(Record).find({
       order: {
         id: "DESC",
       },

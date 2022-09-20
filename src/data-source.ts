@@ -1,25 +1,25 @@
 import { DataSource } from "typeorm";
 import "reflect-metadata";
 
-import { Members } from "./entity/Members";
-import { Record } from "./entity/Record";
+import { Member } from "./entity/member";
+import { Record } from "./entity/record";
 
-export const AppDataSource = new DataSource({
+export const MemberDataSource = new DataSource({
   type: "sqlite",
-  database: "./dist/database.sqlite",
+  database: "./dist/member.sqlite",
   synchronize: true,
   logging: false,
-  entities: [Record],
+  entities: [Member],
   migrations: [],
   subscribers: [],
 });
 
-export const MembersDataSource = new DataSource({
+export const RecordDataSource = new DataSource({
   type: "sqlite",
-  database: "./dist/memberdb.sqlite",
+  database: "./dist/record.sqlite",
   synchronize: true,
   logging: false,
-  entities: [Members],
+  entities: [Record],
   migrations: [],
   subscribers: [],
 });

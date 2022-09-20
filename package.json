@@ -10,7 +10,7 @@
       "format": "prettier -w \"src/**/*.ts\"",
       "lint": "eslint \"src/**/*.ts\"",
       "tsc": "tsc",
-      "initdb": "rimraf dist/memberdb.sqlite && node dist/initmembers.js",
+      "initdb": "rimraf dist/member.sqlite && node dist/init-members.js",
       "build": "run-s npmi clean format lint tsc initdb",
       "start": "node dist/app.js"
    },
