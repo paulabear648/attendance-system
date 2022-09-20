@@ -5,3 +5,24 @@ h1 {
 .center {
     justify-content: center;
 }
+
+.loaded {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.loader h2 {
+  color: #1e90ff;
+  font-size: 2.3rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.content {
+  visibility: hidden;
+  transition: all 0.4s;
+  transition-delay: 0.3s;
+}
+
