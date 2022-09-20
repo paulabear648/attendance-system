@@ -1,5 +1,5 @@
-import { MembersDataSource } from "./data-source";
 import { Members } from "./entity/Members";
+import { MembersDataSource } from "./data-source";
 
 const certificator = {
   // 照合結果に応じてcert, messageを返す

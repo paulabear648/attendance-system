@@ -1,5 +1,5 @@
-import { MembersDataSource } from "./data-source";
 import { Members } from "./entity/Members";
+import { MembersDataSource } from "./data-source";
 
 // データの登録を行う関数
 async function resisterMember(name: string, pin: string) {
