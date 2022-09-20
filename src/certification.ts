@@ -10,7 +10,7 @@ const certificator = {
     // 名前がデータにあれば、そのデータを取得
     const member = await MembersDataSource.getRepository(Members)
       .createQueryBuilder("Members")
-      .where("Members.name = :name", { name: name })
+      .where("Members.name = :name", { name })
       .getOne();
 
     // 名前がデータにない場合
