@@ -31,26 +31,7 @@ app.get("/records", async (req: express.Request, res: express.Response) => {
   for (const record of records) {
     const id = record.id;
     const name = record.name;
-
-    const dayOfWeek = record.time.getDay(); //getDayメソッドは数字を返すため、
-    const dayOfWeekStr = ["日", "月", "火", "水", "木", "金", "土"][dayOfWeek]; // ここで曜日を日本語表記に変換する
-
-    // Date()で表示される時間は見づらかったため、見やすく表示。この部分は、関数化し、Modelにやらせたほうが良いかも
-    const time =
-      record.time.getFullYear().toString() +
-      "年" +
-      (record.time.getMonth() + 1).toString() +
-      "月" +
-      record.time.getDate().toString() +
-      "日（" +
-      dayOfWeekStr +
-      "）" +
-      record.time.getHours().toString() +
-      "：" +
-      record.time.getMinutes().toString() +
-      "：" +
-      record.time.getSeconds().toString();
-
+    const time = model.stringifyTime(record.time); // 文字列に変換
     const state = record.state;
 
     //pushが使用されていたのでコメントアウト、代わりに代入で処理
