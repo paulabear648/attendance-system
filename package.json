@@ -8,7 +8,7 @@
       "npmi": "npm i",
       "clean": "rimraf dist/",
       "format": "prettier -w \"src/**/*.ts\"",
-      "lint": "eslint src/**/*.ts",
+      "lint": "eslint \"src/**/*.ts\"",
       "tsc": "tsc",
       "initdb": "rimraf dist/memberdb.sqlite && node dist/initmembers.js",
       "build": "run-s npmi clean format lint tsc initdb",

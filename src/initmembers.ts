@@ -2,7 +2,7 @@ import { Members } from "./entity/Members";
 import { MembersDataSource } from "./data-source";
 
 // データの登録を行う関数
-async function resisterMember(name: string, pin: string) {
+async function resisterMember(name: string, pin: string): Promise<void> {
   const member = new Members();
   member.name = name;
   member.pin = pin;
