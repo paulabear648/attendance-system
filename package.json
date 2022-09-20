@@ -5,12 +5,14 @@
    "main": "index.js",
    "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
+      "npmi": "npm i",
       "clean": "rimraf dist/",
       "format": "prettier -w \"src/**/*.ts\"",
       "lint": "eslint src/**/*.ts",
       "tsc": "tsc",
-      "build": "run-s clean format lint tsc",
-      "initdb": "rimraf dist/memberdb.sqlite && node dist/initmembers.js"
+      "initdb": "rimraf dist/memberdb.sqlite && node dist/initmembers.js",
+      "build": "run-s npmi clean format lint tsc initdb",
+      "start": "node dist/app.js"
    },
    "repository": {
       "type": "git",
