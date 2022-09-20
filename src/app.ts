@@ -7,6 +7,7 @@ import certificator from "./certification";
 import model from "./model";
 
 const app = express();
+const PORT = 8080;
 
 app.set("view engine", "pug");
 app.set("views", "./src/views");
@@ -101,4 +102,6 @@ MembersDataSource.initialize()
   .catch((error) => console.log(error));
 
 //  localhost 8080でサーバー
-app.listen(8080, () => {});
+app.listen(PORT, () => {
+  console.log(`attendance system running on ${PORT}`);
+});
