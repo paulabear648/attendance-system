@@ -18,6 +18,11 @@ app.use("/records", records);
 // typeormの起動
 ormInit.init();
 
+app.get("/", (req: express.Request, res: express.Response) => {
+  console.log("/");
+  res.redirect("/records");
+});
+
 //  localhost 8080でサーバー
 app.listen(PORT, () => {
   console.log(`attendance system running on ${PORT}`);
