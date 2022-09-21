@@ -22,7 +22,7 @@ const certificator = {
 
     // PINが一致しない場合
     else if (member.pin !== pin) {
-      console.log("do not collect PIN");
+      console.log("do not correct PIN");
       console.log("");
       return { cert: false, message: "PINが正しくありません" };
     }
