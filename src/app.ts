@@ -12,6 +12,7 @@ app.set("views", "./src/views");
 app.use(express.raw({ type: "application/json" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./src/public"));
+app.use(express.static("./dist/public"));
 
 app.use("/records", records);
 
