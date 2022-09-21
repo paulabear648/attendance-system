@@ -1,6 +1,6 @@
-import { AppDataSource } from "../data-source";
 import express from "express";
-import { Record } from "../entity/Record";
+import { RecordDataSource } from "../data-source";
+import { Record } from "../entity/record";
 import certificator from "../certification";
 import model from "../model";
 
@@ -13,7 +13,7 @@ router
     // Recordテーブル内のすべてのデータを取得
     const records = await model.getRecords();
 
-    // pushメソッドを使用しないためにconstをvarに書き換え
+    // エラーが取れないためpushメソッドを使用
     const newRecords = [];
     /*
       let newRecords: {
@@ -71,7 +71,7 @@ router
     record.state = body.state;
 
     // データを保存した後、/recordsにリダイレクト
-    await AppDataSource.manager.save(record);
+    await RecordDataSource.manager.save(record);
 
     console.log(`Saved a new user with id: ${String(record.id.toString())}`); // recordにsaveしたあと、idに値が入るため、ここでconsole.log
 

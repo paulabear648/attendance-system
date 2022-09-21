@@ -1,6 +1,6 @@
 import express from "express";
 
-import ormInit from "./orminit";
+import typeorm from "./init-orm";
 
 import records from "./router/records";
 
@@ -16,7 +16,7 @@ app.use(express.static("./src/public"));
 app.use("/records", records);
 
 // typeormの起動
-ormInit.init();
+typeorm.init();
 
 app.get("/", (req: express.Request, res: express.Response) => {
   console.log("/");
