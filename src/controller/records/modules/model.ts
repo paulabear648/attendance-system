@@ -1,17 +1,6 @@
-import { RecordDataSource } from "../../../db/sources/data-source";
-import { Record } from "../../../db/entity/record";
-
 const TIMEDIGIT = 2;
 
 const model = {
-  async getRecords() {
-    return await RecordDataSource.getRepository(Record).find({
-      order: {
-        id: "DESC",
-      },
-    });
-  },
-
   stringifyTime(time: Date) {
     const dayOfWeek = time.getDay(); // getDayメソッドは数字を返すため、
     const dayOfWeekStr = ["日", "月", "火", "水", "木", "金", "土"][dayOfWeek]; // ここで曜日を日本語表記に変換する
