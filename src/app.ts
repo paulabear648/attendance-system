@@ -1,8 +1,8 @@
 import express from "express";
 
-import typeorm from "./init-orm";
+import typeorm from "./db/init/init-orm";
 
-import records from "./router/records";
+import records from "./router/records/records";
 
 const app = express();
 const PORT = 8080;

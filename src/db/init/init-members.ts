@@ -1,5 +1,5 @@
-import { Member } from "./entity/member";
-import { MemberDataSource } from "./data-source";
+import { Member } from "../entity/member";
+import { MemberDataSource } from "../sources/data-source";
 
 // データの登録を行う関数
 async function registerMember(name: string, pin: string): Promise<void> {
