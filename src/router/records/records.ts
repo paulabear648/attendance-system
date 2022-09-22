@@ -14,15 +14,13 @@ router
     const records = await model.getRecords();
 
     // エラーが取れないためpushメソッドを使用
-    const newRecords = [];
-    /*
-      let newRecords: {
-        id: number;
-        name: string;
-        time: string;
-        state: string;
-      }[] = [];
-      */
+    // const newRecords = [];
+    let newRecords: Array<{
+      id: number;
+      name: string;
+      time: string;
+      state: string;
+    }> = [];
 
     for (const record of records) {
       const id = record.id;
@@ -32,8 +30,8 @@ router
 
       // pushが使用されていたのでコメントアウト、代わりに代入で処理
       // lintが起こったので一旦pushで
-      newRecords.push({ id, name, time, state });
-      // newRecords = [...newRecords, { id, name, time, state }];
+      // newRecords.push({ id, name, time, state });
+      newRecords = [...newRecords, { id, name, time, state }];
     }
 
     console.log(newRecords);
