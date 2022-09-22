@@ -10,8 +10,9 @@ const memberModel = {
     return member;
   },
 
-  async create(name: string, pin: string) {
+  async create(grade: number, name: string, pin: string) {
     const member = new Member();
+    member.grade = grade;
     member.name = name;
     member.pin = pin;
     await MemberDataSource.getRepository(Member).save(member);
