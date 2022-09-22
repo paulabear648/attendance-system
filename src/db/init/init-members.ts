@@ -1,24 +1,20 @@
-import { Member } from "../entity/member";
+// import { Member } from "../entity/member";
 import { MemberDataSource } from "../sources/data-source";
+import memberModel from "../models/member-db";
+// import typeorm from "./init-orm";
 
-// データの登録を行う関数
-async function registerMember(name: string, pin: string): Promise<void> {
-  const member = new Member();
-  member.name = name;
-  member.pin = pin;
-  await MemberDataSource.getRepository(Member).save(member);
-}
+// typeorm.init();
 
 MemberDataSource.initialize()
   .then(async () => {
     // データの登録
-    await registerMember("akito", "0000");
-    await registerMember("sousi", "0001");
-    await registerMember("fumito", "0002");
-    await registerMember("reishi", "0003");
-    await registerMember("ryo", "0004");
-    await registerMember("takeyama", "0005");
-    await registerMember("takahiro", "0006");
-    await registerMember("moti", "0007");
+    await memberModel.create("akito", "0000");
+    await memberModel.create("sousi", "0001");
+    await memberModel.create("fumito", "0002");
+    await memberModel.create("reishi", "0003");
+    await memberModel.create("ryo", "0004");
+    await memberModel.create("takeyama", "0005");
+    await memberModel.create("takahiro", "0006");
+    await memberModel.create("moti", "0007");
   })
   .catch((error) => console.log(error));

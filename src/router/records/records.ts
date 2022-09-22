@@ -1,6 +1,5 @@
 import express from "express";
-import { RecordDataSource } from "../../db/sources/data-source";
-import { Record } from "../../db/entity/record";
+import recordModel from "../../db/models/record-db";
 import certificator from "../../controller/records/modules/certification";
 import model from "../../controller/records/modules/model";
 
@@ -11,7 +10,7 @@ router
   .route("/")
   .get(async (req: express.Request, res: express.Response) => {
     // Recordテーブル内のすべてのデータを取得
-    const records = await model.getRecords();
+    const records = await recordModel.getRecords();
 
     // エラーが取れないためpushメソッドを使用
     // const newRecords = [];
@@ -55,24 +54,7 @@ router
     }
 
     // PINが合致した場合
-
-    // データを保持し、ターミナルにidを表示
-    const record = new Record();
-
-    record.name = body.context;
-
-    // ここから日付表示用の処理
-    const date = new Date(); // dateはDate型
-    record.time = date;
-    // ここまで
-
-    record.state = body.state;
-
-    // データを保存した後、/recordsにリダイレクト
-    await RecordDataSource.manager.save(record);
-
-    console.log(`Saved a new user with id: ${String(record.id.toString())}`); // recordにsaveしたあと、idに値が入るため、ここでconsole.log
-
+    await recordModel.createRecord(body.context, body.state);
     res.redirect("/records");
   });
 
