@@ -6,7 +6,7 @@ import { Record } from "../entity/record";
 
 export const MemberDataSource = new DataSource({
   type: "sqlite",
-  database: "./dist/member.sqlite",
+  database: "./dist/sqlite/member.sqlite",
   synchronize: true,
   logging: false,
   entities: [Member],
@@ -16,7 +16,7 @@ export const MemberDataSource = new DataSource({
 
 export const RecordDataSource = new DataSource({
   type: "sqlite",
-  database: ".dist/record.sqlite",
+  database: "./dist/sqlite/record.sqlite",
   synchronize: true,
   logging: false,
   entities: [Record],
