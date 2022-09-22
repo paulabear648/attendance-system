@@ -6,6 +6,9 @@ export class Member {
   id: number;
 
   @Column({ nullable: false })
+  grade: number;
+
+  @Column({ nullable: false })
   name: string;
 
   @Column({ nullable: false })
