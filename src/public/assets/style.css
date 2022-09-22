@@ -1,17 +1,9 @@
-h1 {
-    color: red;
-}
-
 .navbar-brand {
   font-size: 36px;
 }
 
 .bg-purple {
   background-color: #d9cff8;
-}
-
-.center {
-    justify-content: center;
 }
 
 .loaded {
