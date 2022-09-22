@@ -1,4 +1,4 @@
-import { RecordDataSource, MemberDataSource } from "./data-source";
+import { RecordDataSource, MemberDataSource } from "../sources/data-source";
 
 const typeorm = {
   // typeormの起動

@@ -1,8 +1,8 @@
 import express from "express";
-import { RecordDataSource } from "../data-source";
-import { Record } from "../entity/record";
-import certificator from "../certification";
-import model from "../model";
+import { RecordDataSource } from "../../db/sources/data-source";
+import { Record } from "../../db/entity/record";
+import certificator from "../../controller/records/modules/certification";
+import model from "../../controller/records/modules/model";
 
 const router = express.Router();
 

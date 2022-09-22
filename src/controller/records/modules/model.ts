@@ -1,5 +1,5 @@
-import { RecordDataSource } from "./data-source";
-import { Record } from "./entity/record";
+import { RecordDataSource } from "../../../db/sources/data-source";
+import { Record } from "../../../db/entity/record";
 
 const TIMEDIGIT = 2;
 
