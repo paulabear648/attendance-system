@@ -1,9 +1,9 @@
-h1 {
-    color: red;
+.navbar-brand {
+  font-size: 36px;
 }
 
-.center {
-    justify-content: center;
+.bg-purple {
+  background-color: #d9cff8;
 }
 
 .loaded {
@@ -13,6 +13,7 @@ h1 {
 }
 
 .loader h2 {
+  position: absolute;
   color: #1e90ff;
   font-size: 2.3rem;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
