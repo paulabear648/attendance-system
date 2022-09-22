@@ -16,14 +16,12 @@ html(lang='ja')
             nav.navbar.navbar-light.bg-purple
                 div.container-fluid
                     a.navbar-brand Hayakawa-lab Attendance System
+            
+            //- div.text-center
+            //-     p#RealtimeClockArea ※ここに時計(2桁固定版)が表示されます。
 	
-            .center
-                ol
-                    li 名前を入力
-                    li 入室または退室を押して送信
-
             // {context: "名前", state: "入室（or退室）"} というデータがサーバー側に送られる
-            .center
+            .text-center
                 form(method="POST" action="/records")
                     input#name(type="text" name="context" value="" placeholder="名前" required)
                     input#pin(type="password" name="pin" value="" maxlength="4" placeholder="PIN" required)
@@ -31,6 +29,10 @@ html(lang='ja')
                     button#attend.btn.btn-outline-info(type="submit" name="state" value="入室" tabindex="0" accesskey="i") 入室
                     button#leave.btn.btn-outline-success(type="submit" name="state" value="退室" tabindex="0" accesskey="o") 退室
                 
+            .text-center
+                li(style="list-style: none") 1.名前とPIN(4桁)を入力
+                li(style="list-style: none") 2.入室または退室を押して送信
+
             .center
                 table.table.table-striped
                     thead
