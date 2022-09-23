@@ -10,7 +10,7 @@ router
   .route("/")
   .get(async (req: express.Request, res: express.Response) => {
     // Recordテーブル内のすべてのデータを取得
-    const records = await recordModel.getRecords();
+    const records = await recordModel.readAllDesc();
 
     // エラーが取れないためpushメソッドを使用
     // const newRecords = [];
@@ -54,7 +54,7 @@ router
     }
 
     // PINが合致した場合
-    await recordModel.createRecord(body.context, body.state);
+    await recordModel.create(body.context, body.state);
     res.redirect("/records");
   });
 
