@@ -25,6 +25,7 @@
    },
    "homepage": "https://gitlab.com/meiji-university/hayakawa-lab-2022/playground/attendance-system#readme",
    "dependencies": {
+      "bcrypt": "^5.0.1",
       "bootstrap": "^5.2.1",
       "express": "^4.18.1",
       "jquery": "^3.6.1",
@@ -58,8 +59,8 @@
       "ts-node": "10.7.0",
       "typescript": "4.5.2"
    },
-   "jest":{
-      "preset":"ts-jest",
-      "verbose":true
+   "jest": {
+      "preset": "ts-jest",
+      "verbose": true
    }
 }
