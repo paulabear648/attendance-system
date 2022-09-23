@@ -2,8 +2,7 @@ import express from "express";
 
 import typeorm from "./db/init/init-orm";
 
-import inout from "./router/inout";
-import members from "./router/members";
+import records from "./router/records/records";
 
 const app = express();
 const PORT = 8080;
@@ -15,17 +14,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./src/public"));
 app.use(express.static("./dist/public"));
 
-// API設計
-app.use("/inout", inout);
-app.use("/members", members);
+app.use("/records", records);
 
 // typeormの起動
 typeorm.init();
 
-// ルートトップに来たらリダイレクト
 app.get("/", (req: express.Request, res: express.Response) => {
   console.log("/");
-  res.redirect("/inout");
+  res.redirect("/records");
 });
 
 //  localhost 8080でサーバー

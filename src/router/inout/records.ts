@@ -5,7 +5,7 @@ import model from "../../controller/records/modules/model";
 
 const router = express.Router();
 
-// /recordsに来たリクエストの処理
+// /inout/recordsに来たリクエストの処理
 router
   .route("/")
   .get(async (req: express.Request, res: express.Response) => {
@@ -36,7 +36,7 @@ router
     console.log(newRecords);
     console.log("");
     // テンプレートエンジンに読み込ませる
-    res.render("template", { record: newRecords });
+    res.render("inout/records", { record: newRecords });
   })
   .post(async (req: express.Request, res: express.Response) => {
     const body = req.body;
@@ -49,13 +49,13 @@ router
     if (!certData.cert) {
       // res.render("template", { record: newRecords, message: certData.message });
       // 上の形にすれば、ブラウザにメッセージが出力できそう
-      res.redirect("/records");
+      res.redirect("/inout");
       return;
     }
 
     // PINが合致した場合
     await recordModel.create(body.context, body.state);
-    res.redirect("/records");
+    res.redirect("/inout");
   });
 
 export default router;
