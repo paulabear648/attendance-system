@@ -12,5 +12,5 @@ export class Member {
   name: string;
 
   @Column({ nullable: false })
-  pin: string;
+  password: string;
 }

@@ -3,11 +3,11 @@ import { Member } from "../entity/member";
 import sha256 from "../../controller/inout-modules/sha256";
 
 const memberModel = {
-  async create(grade: number, name: string, hashedpin: string) {
+  async create(grade: number, name: string, hashedpass: string) {
     const member = new Member();
     member.grade = grade;
     member.name = name;
-    member.pin = sha256(hashedpin);
+    member.password = sha256(hashedpass);
     await MemberDataSource.getRepository(Member).save(member);
   },
 

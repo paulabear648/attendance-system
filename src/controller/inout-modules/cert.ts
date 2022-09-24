@@ -6,7 +6,7 @@ import sha256 from "./sha256";
 //   message: string  -> ブラウザに表示させるメッセージを返す
 const certificate = async (
   name: string,
-  pin: string
+  password: string
 ): Promise<{ cert: boolean; message: string }> => {
   // 名前がデータにあれば、そのデータを取得
   const member = await memberModel.read(name);
@@ -18,11 +18,11 @@ const certificate = async (
     return { cert: false, message: "登録されていない名前です" };
   }
 
-  // PINが一致しない場合
-  else if (member.pin !== sha256(pin)) {
-    console.log("do not correct PIN");
+  // passwordが一致しない場合
+  else if (member.password !== sha256(password)) {
+    console.log("do not correct password");
     console.log("");
-    return { cert: false, message: "PINが正しくありません" };
+    return { cert: false, message: "パスワードが正しくありません" };
   }
 
   // 正しく認証できた場合

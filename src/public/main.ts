@@ -1,9 +1,9 @@
-/* const pin = document.getElementById("pin") as HTMLElement;
+/* const password = document.getElementById("password") as HTMLElement;
 
-pin.addEventListener(
+password.addEventListener(
   "change",
   function (): void {
-    const form = document.getElementById("pin") as HTMLInputElement;
+    const form = document.getElementById("password") as HTMLInputElement;
     const formValue = form.value;
 
     if (formValue.match(/[0-9]{1,4}/g) !== formValue) {
