@@ -1,4 +1,5 @@
 import memberModel from "../../../db/models/member-db";
+import sha256 from "./sha256";
 
 const certificator = {
   // 照合結果に応じてcert, messageを返す
@@ -17,7 +18,7 @@ const certificator = {
     }
 
     // PINが一致しない場合
-    else if (member.pin !== pin) {
+    else if (member.pin !== sha256(pin)) {
       console.log("do not correct PIN");
       console.log("");
       return { cert: false, message: "PINが正しくありません" };
