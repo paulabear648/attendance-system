@@ -39,15 +39,15 @@ const ctrl = {
     const body = req.body;
 
     const name = body.context;
-    const pin = body.pin;
+    const password = body.password;
     // 名前の照合（cert:照合結果, message:表示させるメッセージ）
-    const certData = await certificate(name, pin);
+    const certData = await certificate(name, password);
     // 照合失敗の場合
     if (!certData.cert) {
       // res.render("inout", { message: certData.message });
       // 上の形にすれば、ブラウザにメッセージが出力できそう
     } else {
-      // PINが合致した場合
+      // passwordが合致した場合
       await recordModel.create(body.context, body.state);
     }
     // これだと/inout/recordsに登録画面が表示される感じになる

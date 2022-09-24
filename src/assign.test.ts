@@ -8,7 +8,7 @@ afterAll(() => {
   console.log("Test is over");
 });
 
-describe("#1 nameとpinが真", () => {
+describe("#1 nameとpasswordが真", () => {
   test("Jestのテスト", async () => {
     typeorm.initMember(async () => {
       // データの登録
