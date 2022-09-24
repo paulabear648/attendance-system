@@ -1,6 +1,6 @@
 import { MemberDataSource } from "../sources/data-source";
 import { Member } from "../entity/member";
-import sha256 from "../../controller/records/modules/sha256";
+import sha256 from "../../controller/inout-modules/sha256";
 
 const memberModel = {
   async create(grade: number, name: string, hashedpin: string) {
