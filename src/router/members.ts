@@ -7,6 +7,8 @@ const router = express.Router();
 router.use("/register", register);
 
 router.route("/").get(async (req: express.Request, res: express.Response) => {
+  const body = req.body;
+  
   res.redirect("/members/register");
 });
 
