@@ -2,7 +2,6 @@ import express from "express";
 
 import memberModel from "../db/models/member-db";
 import register from "./members/register";
-import sha256 from "../controller/records/modules/sha256";
 
 const router = express.Router();
 
@@ -20,8 +19,7 @@ router
     const grade = body.grade;
     const name = body.name;
     const pass = body.password; // body.passwordはfrontでもハッシュ化されたもの
-    const hashedpass = sha256(pass);
-    await memberModel.create(grade, name, hashedpass);
+    await memberModel.create(grade, name, pass); // create関数内でさらにハッシュ化
 
     res.redirect("/inout");
   });
