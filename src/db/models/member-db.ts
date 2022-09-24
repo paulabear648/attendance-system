@@ -1,12 +1,13 @@
 import { MemberDataSource } from "../sources/data-source";
 import { Member } from "../entity/member";
+import sha256 from "../../controller/records/modules/sha256";
 
 const memberModel = {
-  async create(grade: number, name: string, pin: string) {
+  async create(grade: number, name: string, hashedpin: string) {
     const member = new Member();
     member.grade = grade;
     member.name = name;
-    member.pin = pin;
+    member.pin = sha256(hashedpin);
     await MemberDataSource.getRepository(Member).save(member);
   },
 
