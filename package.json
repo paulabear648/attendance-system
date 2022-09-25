@@ -4,15 +4,16 @@
    "description": "",
    "main": "index.js",
    "scripts": {
-      "test": "jest",
       "npmi": "npm i",
       "clean": "rimraf dist/",
       "format": "prettier -w \"src/**/*.ts\"",
       "lint": "eslint \"src/**/*.ts\"",
       "tsc": "tsc",
-      "initdb": "rimraf dist/sqlite/member.sqlite && node dist/db/init/init-members.js",
+      "cleandb": "rimraf dist/sqlite",
+      "initdb": "run-s cleandb && node dist/db/init/init-members.js",
       "build": "run-s npmi clean format lint tsc initdb",
-      "start": "node dist/app.js"
+      "start": "node dist/app.js",
+      "test": "run-s cleandb && jest \"src/tests\""
    },
    "repository": {
       "type": "git",
@@ -61,6 +62,7 @@
    },
    "jest": {
       "preset": "ts-jest",
-      "verbose": true
+      "verbose": true,
+      "coveragePathIgnorePatterns": ["/dist/","/node_modules/"]
    }
 }
