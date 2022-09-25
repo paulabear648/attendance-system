@@ -106,7 +106,6 @@
     "sourceMap": true
   },
   "exclude" : [
-    "node_modules",
-    "./src/assign.test.ts"
+    "node_modules"
   ],
 }
