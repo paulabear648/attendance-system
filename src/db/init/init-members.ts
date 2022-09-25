@@ -1,7 +1,8 @@
 import memberModel from "../models/member-db";
 import typeorm from "./init-orm";
 
-typeorm.initMember(async () => {
+(async () => {
+  await typeorm.initMember();
   // データの登録
   await memberModel.create(6, "akito", "0000");
   await memberModel.create(6, "sousi", "0001");
@@ -11,4 +12,6 @@ typeorm.initMember(async () => {
   await memberModel.create(6, "takeyama", "0005");
   await memberModel.create(6, "takahiro", "0006");
   await memberModel.create(6, "moti", "0007");
-});
+})()
+  .then()
+  .catch((error) => console.log(error));

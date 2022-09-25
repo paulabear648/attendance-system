@@ -20,7 +20,11 @@ app.use("/inout", inout);
 app.use("/members", members);
 
 // typeormの起動
-typeorm.init();
+(async () => {
+  await typeorm.init();
+})()
+  .then()
+  .catch((error) => console.log(error));
 
 // ルートトップに来たらリダイレクト
 app.get("/", (req: express.Request, res: express.Response) => {
