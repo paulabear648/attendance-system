@@ -1,4 +1,6 @@
 import express from "express";
+import session from "express-session";
+import { flash } from "express-flash-message";
 
 import typeorm from "./db/init/init-orm";
 
@@ -7,12 +9,25 @@ import members from "./router/members";
 
 const app = express();
 
+//
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+    },
+  })
+);
+
 app.set("view engine", "pug");
 app.set("views", "./src/views");
 app.use(express.raw({ type: "application/json" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./src/public"));
 app.use(express.static("./dist/public"));
+app.use(flash());
 
 // API設計
 app.use("/inout", inout);
