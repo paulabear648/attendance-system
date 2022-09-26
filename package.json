@@ -12,7 +12,7 @@
       "cleandb": "rimraf dist/sqlite",
       "initdb": "run-s cleandb && node dist/db/init/init-members.js",
       "build": "run-s npmi clean format lint tsc initdb",
-      "start": "node dist/app.js",
+      "start": "node dist/server.js",
       "test": "run-s cleandb && jest \"src/tests\""
    },
    "repository": {
