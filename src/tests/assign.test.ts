@@ -24,49 +24,49 @@ describe("Test1:nameとpassが一致", () => {
   test("#1:akito", async () => {
     expect(await certificate("akito", "0000")).toStrictEqual({
       cert: true,
-      message: "",
+      message: "正常にログが追加されました",
     });
   });
   test("#2:sousi", async () => {
     expect(await certificate("sousi", "0001")).toStrictEqual({
       cert: true,
-      message: "",
+      message: "正常にログが追加されました",
     });
   });
   test("#3:fumito", async () => {
     expect(await certificate("fumito", "0002")).toStrictEqual({
       cert: true,
-      message: "",
+      message: "正常にログが追加されました",
     });
   });
   test("#4:reisi", async () => {
     expect(await certificate("reishi", "0003")).toStrictEqual({
       cert: true,
-      message: "",
+      message: "正常にログが追加されました",
     });
   });
   test("#5:ryo", async () => {
     expect(await certificate("ryo", "0004")).toStrictEqual({
       cert: true,
-      message: "",
+      message: "正常にログが追加されました",
     });
   });
   test("#6:takeyama", async () => {
     expect(await certificate("takeyama", "0005")).toStrictEqual({
       cert: true,
-      message: "",
+      message: "正常にログが追加されました",
     });
   });
   test("#7:takahiro", async () => {
     expect(await certificate("takahiro", "0006")).toStrictEqual({
       cert: true,
-      message: "",
+      message: "正常にログが追加されました",
     });
   });
   test("#8:moti", async () => {
     expect(await certificate("moti", "0007")).toStrictEqual({
       cert: true,
-      message: "",
+      message: "正常にログが追加されました",
     });
   });
 });
@@ -180,7 +180,7 @@ describe("Test4:名前に漢字かな", () => {
     await memberModel.create(6, "安藤", "0001");
     expect(await certificate("安藤", "0001")).toStrictEqual({
       cert: true,
-      message: "",
+      message: "正常にログが追加されました",
     });
   });
   test("#2:データを作らずに餅を呼ぶ", async () => {
