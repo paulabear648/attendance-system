@@ -42,17 +42,13 @@ const ctrl = {
     const password = body.password;
     // 名前の照合（cert:照合結果, message:表示させるメッセージ）
     const certData = await certificate(name, password);
-    // 照合失敗の場合
-    if (!certData.cert) {
-      // res.render("inout", { message: certData.message });
-      // 上の形にすれば、ブラウザにメッセージが出力できそう
-    } else {
-      // passwordが合致した場合
+    // 照合成功の場合
+    if (certData.cert) {
       await recordModel.create(body.context, body.state);
     }
-    // これだと/inout/recordsに登録画面が表示される感じになる
-    res.render("inout", { message: certData.message });
-    // res.redirect("inout");
+
+    await req.flash("message", certData.message);
+    res.redirect("/inout");
   },
 };
 
