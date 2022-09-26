@@ -6,7 +6,6 @@ import inout from "./router/inout";
 import members from "./router/members";
 
 const app = express();
-const PORT = 8080;
 
 app.set("view engine", "pug");
 app.set("views", "./src/views");
@@ -32,7 +31,4 @@ app.get("/", (req: express.Request, res: express.Response) => {
   res.redirect("/inout");
 });
 
-//  localhost 8080でサーバー
-app.listen(PORT, () => {
-  console.log(`attendance system running on ${PORT}`);
-});
+export default app;
