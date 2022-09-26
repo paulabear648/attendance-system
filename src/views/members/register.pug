@@ -10,12 +10,16 @@ html(lang='ja')
 
     body
         h1 Hayakawa-lab attendancs system
-        button 登録
         button(onclick="location.href='http://localhost:8080/inout/records'") ログを見る
         button(onclick="location.href='http://localhost:8080/'") 戻る
-        form
-            .d-inline-flex.flex-column
+        form(method="POST" action="http://localhost:8080/members")
+            div.d-inline-flex.flex-column
+                select.h3#grade(size="1")
+                    option 3期生
+                    option 4期生
+                    option 5期生
+                    option 6期生
                 input.h3#name(type="text" name="context" value="" placeholder="名前" required)
                 input.h3#password(type="password" name="password" value="" maxlength="4" placeholder="パスワード" required)
                 input.h3(type="password" name="password" value="" maxlength="4" placeholder="re" required)
-                button 登録
+                button(type="submit") 登録
