@@ -9,9 +9,10 @@ const ctrl = {
   async post(req: express.Request, res: express.Response): Promise<void> {
     const body = req.body;
 
-    const grade = body.grade;
-    const name = body.name;
-    const pass = body.password; // body.passwordはfrontでもハッシュ化されたもの
+    // const grade: number = parseInt(body.grade, 10);
+    const grade = 0; // フロント側でnumberが送信でき次第上のコードに置き換える
+    const name: string = body.context;
+    const pass: string = body.password; // body.passwordはfrontでもハッシュ化されたもの
     await memberModel.create(grade, name, pass); // create関数内でさらにハッシュ化
 
     res.redirect("/inout");
