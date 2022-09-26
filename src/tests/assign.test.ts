@@ -176,17 +176,17 @@ describe("Test3:nameが一致するがpassは不一致", () => {
 });
 
 describe("Test4:名前に漢字かな", () => {
-    test("#1:新たにデータを作り安藤を呼ぶ", async () => {
-        await memberModel.create(6, "安藤", "0001");
-      expect(await certificate("安藤", "0001")).toStrictEqual({
-        cert: true,
-        message: ""
-      });
+  test("#1:新たにデータを作り安藤を呼ぶ", async () => {
+    await memberModel.create(6, "安藤", "0001");
+    expect(await certificate("安藤", "0001")).toStrictEqual({
+      cert: true,
+      message: "",
     });
-    test("#2:データを作らずに餅を呼ぶ", async () => {
-        expect(await certificate("餅", "0007")).toStrictEqual({
-          cert: false,
-          message: "登録されていない名前です",
-        });
-      });
+  });
+  test("#2:データを作らずに餅を呼ぶ", async () => {
+    expect(await certificate("餅", "0007")).toStrictEqual({
+      cert: false,
+      message: "登録されていない名前です",
+    });
+  });
 });

@@ -11,8 +11,8 @@ html(lang='ja')
     body
         h1 Hayakawa-lab attendancs system
         button 登録
-        button ログを見る
-        button 戻る
+        button(onclick="location.href='http://localhost:8080/inout/records'") ログを見る
+        button(onclick="location.href='http://localhost:8080/'") 戻る
         form
             .d-inline-flex.flex-column
                 input.h3#name(type="text" name="context" value="" placeholder="名前" required)
