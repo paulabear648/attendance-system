@@ -1,0 +1,29 @@
+.navbar-brand {
+  font-size: 36px;
+}
+
+.bg-purple {
+  background-color: #d9cff8;
+}
+
+.loaded {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.loader h2 {
+  position: absolute;
+  color: #1e90ff;
+  font-size: 2.3rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.content {
+  visibility: hidden;
+  transition: all 0.4s;
+  transition-delay: 0.3s;
+}
+
