@@ -33,6 +33,7 @@ password.addEventListener(
 //   document.querySelector("RealtimeClockArea").innerText = msg;
 // }
 // setInterval('showClock()',1000);
+import $ from "jquery";
 
 window.onload = function () {
   setTimeout(() => {
@@ -43,3 +44,22 @@ window.onload = function () {
     content.style.visibility = "visible";
   }, 1300);
 };
+
+$(() => {
+  $.ajaxSetup({
+    contentType: "application/json",
+  });
+
+  // 本の追加ボタン
+  const registerMemberButton = $("#register");
+  registerMemberButton.on("click", (event) => {
+    event.preventDefault();
+    window.location.href = "/members/register";
+  });
+  
+  const showLogButton = $("#howLog");
+    showLogButton.on("click", (event) => {
+    event.preventDefault();
+    window.location.href = "/inout/records";
+  });
+});
