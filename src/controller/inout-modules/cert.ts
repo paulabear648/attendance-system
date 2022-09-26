@@ -27,7 +27,7 @@ const certificate = async (
 
   // 正しく認証できた場合
   else {
-    return { cert: true, message: "" };
+    return { cert: true, message: "正常にログが追加されました" };
   }
 };
 

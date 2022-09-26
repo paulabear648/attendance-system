@@ -45,9 +45,11 @@ const ctrl = {
     // 照合成功の場合
     if (certData.cert) {
       await recordModel.create(body.context, body.state);
+      await req.flash("success", certData.message);
+    } else {
+      await req.flash("error", certData.message);
     }
 
-    await req.flash("message", certData.message);
     res.redirect("/inout");
   },
 };

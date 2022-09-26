@@ -2,9 +2,11 @@ import express from "express";
 
 const ctrl = {
   async get(req: express.Request, res: express.Response): Promise<void> {
-    const messages = await req.consumeFlash("message");
-    const message = messages.length === 0 ? "" : messages[0];
-    res.render("inout", { message });
+    const successMessage = await req.consumeFlash("success");
+    const success = successMessage.length === 0 ? "" : successMessage[0];
+    const errorMessage = await req.consumeFlash("error");
+    const error = errorMessage.length === 0 ? "" : errorMessage[0];
+    res.render("inout", { success, error });
   },
 };
 
