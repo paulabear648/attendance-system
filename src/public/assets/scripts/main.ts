@@ -56,9 +56,9 @@ $(() => {
     event.preventDefault();
     window.location.href = "/members/register";
   });
-  
+
   const showLogButton = $("#howLog");
-    showLogButton.on("click", (event) => {
+  showLogButton.on("click", (event) => {
     event.preventDefault();
     window.location.href = "/inout/records";
   });
