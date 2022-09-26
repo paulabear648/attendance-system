@@ -33,13 +33,14 @@ password.addEventListener(
 //   document.querySelector("RealtimeClockArea").innerText = msg;
 // }
 // setInterval('showClock()',1000);
+// import $ from "jquery";
 
-window.onload = function () {
-  setTimeout(() => {
-    const loader = document.querySelector(".loader") as HTMLElement;
-    loader.classList.add("loaded");
+// window.onload = function () {
+//   setTimeout(() => {
+//     const loader = document.querySelector(".loader") as HTMLElement;
+//     loader.classList.add("loaded");
 
-    const content = document.querySelector(".content") as HTMLElement;
-    content.style.visibility = "visible";
-  }, 1300);
-};
+//     const content = document.querySelector(".content") as HTMLElement;
+//     content.style.visibility = "visible";
+//   }, 1300);
+// };
