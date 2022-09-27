@@ -2,6 +2,11 @@
   font-size: 36px;
 }
 
+img {
+  width : 10%;
+  height : 10%;
+}
+
 .bg-purple {
   background-color: #d9cff8;
 }
@@ -27,3 +32,10 @@
   transition-delay: 0.3s;
 }
 
+.success-message {
+  color : #1a73e8;
+}
+
+.error-message {
+  color : #d93025;
+}
