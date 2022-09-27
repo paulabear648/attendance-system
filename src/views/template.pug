@@ -21,18 +21,23 @@ html(lang='ja')
             //-     p#RealtimeClockArea ※ここに時計(2桁固定版)が表示されます。
 	
             // {context: "名前", state: "入室（or退室）"} というデータがサーバー側に送られる
-            .text-center
+            div.text-center.py-4
                 form(method="POST" action="/records")
                     div.d-inline-flex.flex-column
-                        input.h3#name(type="text" name="context" value="" placeholder="名前" required)
-                        input.h3#password(type="password" name="password" value="" maxlength="4" placeholder="パスワード" required)
-                    div#alert
-                    button#attend.btn.btn-outline-info(type="submit" name="state" value="入室" tabindex="0" accesskey="i") 入室
-                    button#leave.btn.btn-outline-success(type="submit" name="state" value="退室" tabindex="0" accesskey="o") 退室
+                        input.mb-3.mt-5.h3#name(type="text" name="context" value="" placeholder="名前" required)
+                        input.mb-5.h3#pin(type="password" name="pin" value="" maxlength="4" placeholder="PIN" required)
+                        div#alert
+                        div
+                            button.mx-3#attend.btn.btn-outline-info(type="submit" name="state" value="入室" tabindex="0" accesskey="i")
+                                img(src="https://img.icons8.com/ios-glyphs/344/login-rounded-right--v1.png") 
+                                a 入室
+                            button.mx-3#leave.btn.btn-outline-success(type="submit" name="state" value="退室" tabindex="0" accesskey="o")
+                                img(src="https://img.icons8.com/ios-glyphs/344/logout-rounded--v1.png") 
+                                a 退室
                 
             .text-center
-                li(style="list-style: none") 1.名前とパスワード(4桁)を入力
-                li(style="list-style: none") 2.入室または退室を押して送信
+                li.py-2(style="list-style: none") 1.名前とPIN(4桁)を入力
+                li.py-2(style="list-style: none") 2.入室または退室を押して送信
 
             .center
                 table.table.table-striped
@@ -48,4 +53,3 @@ html(lang='ja')
                                 th #{person.name}
                                 th #{person.time}
                                 th #{person.state}
-                            
