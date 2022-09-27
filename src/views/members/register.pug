@@ -9,12 +9,13 @@ html(lang='ja')
         link(rel='stylesheet' href='assets/css/style.css' type='text/css')
 
     body
-        h1 Hayakawa-lab attendancs system
-        button(onclick="location.href='http://localhost:8080/inout/records'") ログを見る
-        button(onclick="location.href='http://localhost:8080/'") 戻る
+        h1.m-4.text-center Hayakawa-lab attendancs system
+        .m-2
+            button(onclick="location.href='http://localhost:8080/inout/records'") ログを見る
+            button(onclick="location.href='http://localhost:8080/'") 戻る
         form(method="POST" action="http://localhost:8080/members")
-            div.d-inline-flex.flex-column
-                select.h3#grade(size="1")
+            .d-inline-flex.flex-column
+                select.h3#grade.m-3(size="1")
                     option 3期生
                     option 4期生
                     option 5期生

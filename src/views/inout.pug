@@ -10,9 +10,10 @@ html(lang='ja')
 
 
     body
-        h1 Hayakawa-lab attendancs system
-        button#register(onclick="location.href='http://localhost:8080/members/register'") メンバーを登録
-        button#showLog(onclick="location.href='http://localhost:8080/inout/records'") ログを見る
+        h1.m-4.text-center Hayakawa-lab attendancs system
+        .m-2
+            button#register(onclick="location.href='http://localhost:8080/members/register'") メンバーを登録
+            button#showLog(onclick="location.href='http://localhost:8080/inout/records'") ログを見る
 
         .text-center
             form(method="POST" action="/inout/records")
