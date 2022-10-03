@@ -3,6 +3,7 @@ import memberModel from "../db/models/member-db";
 import typeorm from "../db/init/init-orm";
 
 beforeAll(async () => {
+  // console.log();
   await typeorm.initMember();
 
   // データの登録
@@ -16,11 +17,13 @@ beforeAll(async () => {
   await memberModel.create(6, "moti", "0007");
 });
 
-afterAll(() => {
+afterAll(async () => {
+  //await typeorm.destroyAll();
   console.log("Test is over");
 });
 
 describe("Test1:nameとpassが一致", () => {
+  
   test("#1:akito", async () => {
     expect(await certificate("akito", "0000")).toStrictEqual({
       cert: true,
