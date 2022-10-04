@@ -19,6 +19,12 @@ const typeorm = {
   async initMember() {
     await MemberDataSource.initialize();
   },
+
+  async destroyAll(){
+    await MemberDataSource.destroy();
+    await RecordDataSource.destroy();
+    console.log("database is destroyed.");
+  }
 };
 
 export default typeorm;
