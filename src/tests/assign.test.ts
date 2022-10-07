@@ -18,12 +18,11 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  //await typeorm.destroyAll();
+  // await typeorm.destroyAll();
   console.log("Test is over");
 });
 
 describe("Test1:nameとpassが一致", () => {
-  
   test("#1:akito", async () => {
     expect(await certificate("akito", "0000")).toStrictEqual({
       cert: true,
