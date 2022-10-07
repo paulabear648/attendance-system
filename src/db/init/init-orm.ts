@@ -20,11 +20,11 @@ const typeorm = {
     await MemberDataSource.initialize();
   },
 
-  async destroyAll(){
+  async destroyAll() {
     await MemberDataSource.destroy();
     await RecordDataSource.destroy();
     console.log("database is destroyed.");
-  }
+  },
 };
 
 export default typeorm;
