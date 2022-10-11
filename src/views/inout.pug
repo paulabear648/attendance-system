@@ -14,8 +14,8 @@ html(lang='ja')
             div.container-fluid
                 a.navbar-brand Hayakawa-lab Attendance System
         .m-2
-            button#register(onclick="location.href='http://localhost:8080/members/register'") メンバーを登録
-            button#showLog(onclick="location.href='http://localhost:8080/inout/records'") ログを見る
+            button#register(onclick="location.href='/members/register'") メンバーを登録
+            button#showLog(onclick="location.href='/inout/records'") ログを見る
 
         div.text-center.py-4
             form(method="POST" action="/inout/records")
