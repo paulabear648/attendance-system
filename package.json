@@ -4,14 +4,13 @@
    "description": "",
    "main": "index.js",
    "scripts": {
-      "npmi": "npm i",
       "clean": "rimraf dist/",
       "format": "prettier -w \"src/**/*.ts\"",
       "lint": "eslint \"src/**/*.ts\"",
       "tsc": "tsc",
       "cleandb": "rimraf dist/sqlite",
       "initdb": "run-s cleandb && node dist/db/init/init-members.js",
-      "build": "run-s npmi clean format lint tsc",
+      "build": "run-s clean format lint tsc",
       "start": "node dist/server.js",
       "test": "run-s cleandb && jest \"src/tests\""
    },
