@@ -1,4 +1,4 @@
-import memberModel from "../../db/models/member-db";
+import memberModel from "../db/models/member-db";
 import sha256 from "./sha256";
 
 // 照合結果に応じてcert, messageを返す

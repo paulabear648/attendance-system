@@ -8,11 +8,11 @@
       "format": "prettier -w \"src/**/*.ts\"",
       "lint": "eslint \"src/**/*.ts\"",
       "tsc": "tsc",
-      "cleandb": "rimraf dist/sqlite",
+      "cleandb": "rimraf sqlite",
       "initdb": "run-s cleandb && node dist/db/init/init-members.js",
       "build": "run-s clean format lint tsc",
-      "start": "node dist/server.js",
-      "test": "run-s cleandb && jest \"src/tests\""
+      "start": "node dist/src/server.js",
+      "test": "run-s cleandb && jest \"tests\""
    },
    "repository": {
       "type": "git",

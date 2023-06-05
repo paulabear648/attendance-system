@@ -1,4 +1,4 @@
-import certificate from "../controller/inout-modules/cert";
+import certificate from "../modules/cert";
 import memberModel from "../db/models/member-db";
 import typeorm from "../db/init/init-orm";
 
