@@ -10,7 +10,7 @@ const router = express.Router();
 
 // /inoutに来たリクエストの処理
 router.route("/inout").get(inoutCtrl.get);
-router.route("/inout/records").post(recordsCtrl.post);
+router.route("/inout/records").get(recordsCtrl.get).post(recordsCtrl.post);
 router.route("/members").post(membersCtrl.post);
 router.route("/members/register").get(registerCtrl.get);
 

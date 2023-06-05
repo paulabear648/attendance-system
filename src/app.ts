@@ -23,8 +23,8 @@ app.use(
 
 app.set("view engine", "pug");
 app.set("views", "./views");
-app.use(express.raw({ type: "application/json" }));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static("./src/public"));
 app.use(express.static("./dist/public"));
 app.use(flash());
