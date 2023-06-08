@@ -1,3 +1,4 @@
+import axios from "axios";
 import express from "express";
 
 const ctrl = {
@@ -6,7 +7,12 @@ const ctrl = {
     const success = successMessage.length === 0 ? "" : successMessage[0];
     const errorMessage = await req.consumeFlash("error");
     const error = errorMessage.length === 0 ? "" : errorMessage[0];
-    res.render("inout", { success, error });
+
+    // 直近5人のログを取得
+    const record = await axios.get(
+      "http://127.0.0.1:8080/api/records?limit=5&desc=true"
+    );
+    res.render("inout", { success, error, record: record.data });
   },
 };
 

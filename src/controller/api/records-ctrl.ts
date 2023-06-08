@@ -5,8 +5,19 @@ import stringifyTime from "../../../modules/stringify-time";
 
 const ctrl = {
   async get(req: express.Request, res: express.Response): Promise<void> {
+    // クエリパラメータからlimitの取得
+    const limit: number = isNaN(Number(req.query["limit"]))
+      ? 0
+      : Number(req.query["limit"]);
+    // クエリパラメータからoffsetの取得
+    const offset: number = isNaN(Number(req.query["offset"]))
+      ? 0
+      : Number(req.query["offset"]);
+    // クエリパラメータからisDesc(降順にするかどうか)の取得
+    const isDesc: boolean = Boolean(req.query["desc"]);
+
     // Recordテーブル内のすべてのデータを取得
-    const records = await recordModel.readAllDesc();
+    const records = await recordModel.read(limit, offset, isDesc);
 
     // エラーが取れないためpushメソッドを使用
     // const newRecords = [];
