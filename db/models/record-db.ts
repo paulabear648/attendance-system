@@ -15,11 +15,22 @@ const recordModel = {
     console.log(`Saved a new user with id: ${String(record.id.toString())}`);
   },
 
-  async readAllDesc() {
+  /*
+   * @limit 取得する個数
+   * @offset 取得し始める番号 
+   * @isDesc 降順で結果を返すかどうか
+   */
+
+  async read(limit: number, offset: number, isDesc: Boolean) {
+    limit = limit | 0;
+    offset = offset | 0;
+    const order = isDesc ? "DESC" : "ASC";
     return await RecordDataSource.getRepository(Record).find({
       order: {
-        id: "DESC",
+        id: order,
       },
+      skip: offset,
+      take: limit,
     });
   },
 };
