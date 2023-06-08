@@ -3,8 +3,9 @@ html(lang='ja')
     head
         meta(charset='utf-8')
         title Attendance System
-        link(rel='stylesheet' href='/assets/css/sanitize.css' type='text/css')
+        link(rel='stylesheet' href='/sanitize.css' type='text/css')
         link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
+<<<<<<< HEAD
 <<<<<<< HEAD
         script(type='text/javascript' src='assets/scripts/main.js')
         link(rel='stylesheet' href='assets/css/style.css' type='text/css')
@@ -29,6 +30,10 @@ html(lang='ja')
 =======
         script(type='text/javascript' src='/assets/scripts/main.js')
         link(rel='stylesheet' href='/assets/css/style.css' type='text/css')
+=======
+        script(type='text/javascript' src='/main.js')
+        link(rel='stylesheet' href='/style.css' type='text/css')
+>>>>>>> 6e04c71 (静的ファイル扱いにする部分のパスの修正)
 
 
     body
@@ -41,9 +46,9 @@ html(lang='ja')
                     .collapse.navbar-collapse.justify-content-end#navbarNav
                         ul.navbar-nav
                             li.nav-item
-                                a.nav-link(aria-current="page" href="/inout") Home
+                                a.nav-link.active(aria-current="page" href="/inout") Home
                             li.nav-item
-                                a.nav-link.active(href="/members/register") メンバーを登録
+                                a.nav-link(href="/members/register") メンバーを登録
                             li.nav-item
                                 a.nav-link(href="/inout/records") ログを見る
 >>>>>>> fbdd78e (ヘッダーを統一（headerタグつかおうね))

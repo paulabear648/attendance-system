@@ -25,8 +25,8 @@ app.set("view engine", "pug");
 app.set("views", "./views");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("./src/public"));
-app.use(express.static("./dist/public"));
+app.use(express.static("./dist/src/public/assets/scripts"));
+app.use(express.static("./src/public/assets/css"));
 app.use(flash());
 
 // API
