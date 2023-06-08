@@ -1,7 +1,7 @@
 import express from "express";
-import recordModel from "../../db/models/record-db";
-import certificate from "../inout-modules/cert";
-import stringifyTime from "../inout-modules/stringify-time";
+import recordModel from "../../../db/models/record-db";
+import certificate from "../../../modules/cert";
+import stringifyTime from "../../../modules/stringify-time";
 
 const ctrl = {
   async get(req: express.Request, res: express.Response): Promise<void> {
@@ -29,10 +29,12 @@ const ctrl = {
       newRecords = [...newRecords, { id, name, time, state }];
     }
 
+    console.log("--- new records ---");
     console.log(newRecords);
-    console.log("");
-    // テンプレートエンジンに読み込ませる
-    res.render("inout/records", { record: newRecords });
+    console.log("-------------------");
+
+    // 指定されたレコードをJSON形式で返す
+    res.json(newRecords);
   },
 
   async post(req: express.Request, res: express.Response): Promise<void> {
@@ -40,17 +42,16 @@ const ctrl = {
 
     const name = body.context;
     const password = body.password;
+    const state = body.state;
+
     // 名前の照合（cert:照合結果, message:表示させるメッセージ）
     const certData = await certificate(name, password);
     // 照合成功の場合
     if (certData.cert) {
-      await recordModel.create(body.context, body.state);
-      await req.flash("success", certData.message);
-    } else {
-      await req.flash("error", certData.message);
+      await recordModel.create(name, state);
     }
 
-    res.redirect("/inout");
+    res.json({ message: certData.message, cert: certData.cert });
   },
 };
 
