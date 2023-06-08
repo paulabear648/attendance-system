@@ -38,7 +38,19 @@ html(lang='ja')
                         button.mx-3#leave.btn.btn-outline-success(type="submit" name="state" value="退室" tabindex="0" accesskey="o")
                             img(src="https://img.icons8.com/ios-glyphs/344/logout-rounded--v1.png") 
                             a 退室
-                
+        table.table.table-striped
+            thead
+                tr
+                    - var elements = ['氏名', '日付', '状態']
+                    each item in elements
+                        th #{item}
+            tbody
+                each person in record
+                    tr
+                        th #{person.name}
+                        th #{person.time}
+                        th #{person.state}
+            
         .text-center
             li.py-2(style="list-style: none") 1.名前とパスワード(4桁)を入力
             li.py-2(style="list-style: none") 2.入室または退室を押して送信
