@@ -10,9 +10,8 @@ const ctrl = {
 
     // 直近5人のログを取得
     const record = await axios.get(
-      "http://127.0.0.1:8080/api/records?limit=5&isDesc=true"
+      "http://127.0.0.1:8080/api/records?limit=5&desc=true"
     );
-    console.log(record);
     res.render("inout", { success, error, record: record.data });
   },
 };

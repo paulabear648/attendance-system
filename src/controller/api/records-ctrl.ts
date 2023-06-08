@@ -14,7 +14,7 @@ const ctrl = {
       ? 0
       : Number(req.query["offset"]);
     // クエリパラメータからisDesc(降順にするかどうか)の取得
-    const isDesc: boolean = Boolean(req.query["isDesc"]);
+    const isDesc: boolean = Boolean(req.query["desc"]);
 
     // Recordテーブル内のすべてのデータを取得
     const records = await recordModel.read(limit, offset, isDesc);

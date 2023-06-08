@@ -10,7 +10,7 @@ const ctrl = {
   async post(req: express.Request, res: express.Response): Promise<void> {
     // axiosでのやり取り
     const result: { data: { message: string; cert: boolean } } =
-      await axios.post("http://127.0.0.1:8080/api/records", {
+      await axios.post("http://127.0.0.1:8080/api/records?desc=true", {
         context: req.body.context,
         password: req.body.password,
         state: req.body.state,
