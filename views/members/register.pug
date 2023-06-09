@@ -6,13 +6,27 @@ html(lang='ja')
         link(rel='stylesheet' href='assets/css/sanitize.css' type='text/css')
         link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
         script(type='text/javascript' src='assets/scripts/main.js')
-        link(rel='stylesheet' href='assets/css/style.css' type='text/css')
+        link(rel='stylesheet' href='../assets/css/style.css' type='text/css')
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet")
 
     body
-        h1.m-4.text-center Hayakawa-lab attendance system
-        .m-2
-            button(onclick="location.href='/inout/records'") ログを見る
-            button(onclick="location.href='/'") 戻る
+        nav.navbar.navbar-expand-lg.navbar-light.bg-purple
+            .container-fluid
+                a.navbar-brand(href="#") Hayakawa_lab Attendance System
+                button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+                    span.navbar-toggler-icon
+                .collapse.navbar-collapse.justify-content-end#navbarNav
+                    ul.navbar-nav
+                        li.nav-item
+                            a.nav-link.active(aria-current="page" href="/inout") Home
+                        li.nav-item
+                            a.nav-link(href="/members/register") メンバーを登録
+                        li.nav-item
+                            a.nav-link(href="/inout/records") ログを見る
+        button(onclick="location.href='/inout/records'") ログを見る
+        button(onclick="location.href='/'") 戻る
         form(method="POST" action="/members")
             .d-inline-flex.flex-column
                 select.h3#grade.m-3(size="1")
