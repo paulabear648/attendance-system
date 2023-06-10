@@ -12,7 +12,7 @@ const ctrl = {
     const record = await axios.get(
       "http://127.0.0.1:8080/api/records?limit=5&desc=true"
     );
-    res.render("inout", { success, error, record: record.data });
+    res.render("contents/inout", { success, error, record: record.data });
   },
 };
 
