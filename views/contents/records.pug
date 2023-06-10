@@ -5,16 +5,4 @@ html(lang='ja')
         script(type='text/javascript' src='/records/records.js' defer)
 body
     include ../meta/header.pug 
-    .center
-        table.table.table-striped
-            thead
-                tr
-                    - var elements = ['氏名', '日付', '状態']
-                    each item in elements
-                        th #{item}
-            tbody
-                each person in record
-                    tr
-                        th #{person.name}
-                        th #{person.time}
-                        th #{person.state}
+    include ../meta/table.pug
