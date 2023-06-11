@@ -5,7 +5,7 @@ const ctrl = {
   async get(req: express.Request, res: express.Response): Promise<void> {
     const result = await axios.get("http://127.0.0.1:8080/api/records");
 
-    res.render("inout/records", { record: result.data });
+    res.render("contents/records", { record: result.data });
   },
   async post(req: express.Request, res: express.Response): Promise<void> {
     // axiosでのやり取り

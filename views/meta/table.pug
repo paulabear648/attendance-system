@@ -1,0 +1,13 @@
+.center
+    table.table.table-striped
+        thead
+            tr
+                - var elements = ['氏名', '日付', '状態']
+                each item in elements
+                    th #{item}
+        tbody
+            each person in record
+                tr
+                    th #{person.name}
+                    th #{person.time}
+                    th #{person.state}

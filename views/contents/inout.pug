@@ -1,0 +1,26 @@
+doctype html
+html(lang='ja')
+    head
+        include ../meta/meta.pug
+        script(type='text/javascript' src='/inout/inout.js' defer) 
+body
+    include ../meta/header.pug 
+    .text-center.py-4
+        form(method="POST" action="/inout/records")
+            .mb-3.d-inline-flex.flex-column
+                input.h3#name(type="text" name="context" value="" placeholder="名前" required)
+                input.h3#password(type="password" name="password" value="" maxlength="4" placeholder="パスワード" required)
+                .position-relative
+                    .py-2.position-absolute.text-center.success-message #{success}
+                    .py-2.position-absolute.text-center.error-message #{error}
+                #alert.mt-5
+                    button.mx-3#attend.btn.btn-outline-info(type="submit" name="state" value="入室" tabindex="0" accesskey="i")
+                        img(src="https://img.icons8.com/ios-glyphs/344/login-rounded-right--v1.png") 
+                        a 入室
+                    button.mx-3#leave.btn.btn-outline-success(type="submit" name="state" value="退室" tabindex="0" accesskey="o")
+                        img(src="https://img.icons8.com/ios-glyphs/344/logout-rounded--v1.png") 
+                        a 退室 
+        .text-center
+            li.py-2(style="list-style: none") 1.名前とパスワード(4桁)を入力
+            li.py-2(style="list-style: none") 2.入室または退室を押して送信
+    include ../meta/table.pug 

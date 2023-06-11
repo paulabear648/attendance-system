@@ -1,0 +1,14 @@
+header 
+    nav.navbar.navbar-expand-lg.navbar-light.bg-purple
+        .container-fluid
+            a.navbar-brand Hayakawa-lab Attendance System
+            button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+                span.navbar-toggler-icon
+            .collapse.navbar-collapse.justify-content-end#navbarNav
+                ul.navbar-nav
+                    li.nav-item
+                        a.nav-link#home(aria-current="page" href="/inout") Home
+                    li.nav-item
+                        a.nav-link#register(href="/members/register") メンバーを登録
+                    li.nav-item
+                        a.nav-link#log(href="/inout/records") ログを見る
