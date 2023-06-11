@@ -11,18 +11,11 @@ const certificate = async (
   // 名前がデータにあれば、そのデータを取得
   const member = await memberModel.read(name);
 
-  // 名前がデータにない場合
-  if (member === null) {
-    console.log("cannot found name");
+  // 名前がデータにない場合 or passwordが一致しない場合
+  if (member === null || member.password !== sha256(password)) {
+    console.log("do not correct password or name");
     console.log("");
-    return { cert: false, message: "登録されていない名前です" };
-  }
-
-  // passwordが一致しない場合
-  else if (member.password !== sha256(password)) {
-    console.log("do not correct password");
-    console.log("");
-    return { cert: false, message: "パスワードが正しくありません" };
+    return { cert: false, message: "名前またはパスワードが正しくありません" };
   }
 
   // 正しく認証できた場合
