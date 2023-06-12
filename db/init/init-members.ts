@@ -18,7 +18,7 @@ import recordModel from "../models/record-db";
 
   // ログの登録(工数の都合で正規化されていません！)
   await recordModel.create("阿部", "入室");
-  await recordModel.create("平山", "退室");
+  await recordModel.create("平山", "入室");
   await recordModel.create("平山", "退室");
   await recordModel.create("大橋", "入室");
   await recordModel.create("杉田", "入室");
