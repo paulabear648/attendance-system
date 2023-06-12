@@ -3,14 +3,14 @@ import axios from "axios";
 
 const ctrl = {
   async get(req: express.Request, res: express.Response): Promise<void> {
-    const result = await axios.get("http://127.0.0.1:8080/api/records");
+    const result = await axios.get("http://127.0.0.1:8080/api/records?desc=1");
 
     res.render("contents/records", { record: result.data });
   },
   async post(req: express.Request, res: express.Response): Promise<void> {
     // axiosでのやり取り
     const result: { data: { message: string; cert: boolean } } =
-      await axios.post("http://127.0.0.1:8080/api/records?desc=true", {
+      await axios.post("http://127.0.0.1:8080/api/records", {
         context: req.body.context,
         password: req.body.password,
         state: req.body.state,
