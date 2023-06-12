@@ -12,7 +12,8 @@
       "initdb": "run-s cleandb && node dist/db/init/init-members.js",
       "build": "run-s clean format lint tsc",
       "start": "node dist/src/server.js",
-      "test": "run-s cleandb && jest \"tests\""
+      "test": "run-s cleandb && jest \"tests\"",
+      "debug": "run-s build initdb start"
    },
    "repository": {
       "type": "git",
